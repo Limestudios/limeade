@@ -1,0 +1,30 @@
+$primary-color: blue;
+
+// ---- GRID ---- //
+$grid: (
+    debug: false,
+    size: 12,
+    gutter: 8px,
+    breakpoints: (
+        xs: (
+            size: 480px,
+            color: orange
+        ),
+        sm: (
+            size: 768px,
+            color: purple
+        ),
+        md: (
+            size: 992px,
+            color: blue
+        ),
+        lg: (
+            size: 1200px,
+            color: green
+        ),
+        fl: (
+            size:100%,
+            color: red
+        )
+    )
+);

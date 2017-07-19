@@ -1,0 +1,36 @@
+{
+  "name": "limeade",
+  "version": "1.0.0",
+  "description": "CSS Framework for the modern web.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/limestudios/limeade.git"
+  },
+  "keywords": [
+    "lcraver",
+    "lime",
+    "studios",
+    "css",
+    "framework",
+    "html5",
+    "sass",
+    "js"
+  ],
+  "author": "Liam Craver",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/limestudios/limeade/issues"
+  },
+  "homepage": "https://github.com/limestudios/limeade#readme",
+  "devDependencies": {
+    "browser-sync": "^2.18.12",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-clean": "^0.3.2",
+    "gulp-sass": "^3.1.0"
+  }
+}

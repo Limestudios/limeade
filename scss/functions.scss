@@ -1,0 +1,18 @@
+@function breakpoint($name) {
+    $temp: map-get($grid, breakpoints);
+    $temp: map-deep-get($temp, $name, "size");
+    @return $temp;
+}
+
+@function breakpoint-col($name) {
+    $temp: map-get($grid, breakpoints);
+    $temp: map-deep-get($temp, $name, "color");
+    @return $temp;
+}
+
+@function map-deep-get($map, $keys...) {
+    @each $key in $keys {
+        $map: map-get($map, $key);
+    }
+    @return $map;
+}
