@@ -3,7 +3,7 @@
   margin-left: auto;
 }
 
-.row {
+row {
   box-sizing: border-box;
   display: flex;
   flex: 0 1 auto;
@@ -12,11 +12,11 @@
   width: 100%;
 }
 
-.row.reverse {
+row.reverse {
   flex-direction: row-reverse;
 }
 
-.col.reverse {
+section.reverse {
   flex-direction: column-reverse;
 }
 
@@ -44,93 +44,96 @@ $breakpoints: map-get($grid, breakpoints);
       width: breakpoint($breakpoint);
     }
 
-    .col-#{$tmp-name}, [class*="col-#{$tmp-name}"] {
-      box-sizing: border-box;
-      flex: 0 0 auto;
-      display: flex;
+    row {
+      section[col="#{$tmp-name}"], section {
+        box-sizing: border-box;
+        flex: 0 0 auto;
+        display: flex;
 
-      @if map-get($grid, debug) == true {
-        outline: 1px solid breakpoint-col($tmp-name);
+        @if map-get($grid, debug) == true {
+          outline: 1px solid breakpoint-col($tmp-name);
+        }
       }
-    }
 
-    .col-#{$tmp-name} {
-      flex-grow: 1;
-      flex-basis: 0;
-      max-width: 100%;
-    }
+      section[col="#{$tmp-name}"] {
+        flex-grow: 1;
+        flex-basis: 0;
+        max-width: 100%;
+        display: block;
+      }
 
-    @for $i from 1 through map-get($grid, size) {
-      .col-#{$tmp-name}, .col-#{$tmp-name}-#{$i} {
-        flex-basis: #{percentage($i / map-get($grid, size))};
-        max-width: #{percentage($i / map-get($grid, size))};
+      @for $i from 1 through map-get($grid, size) {
+        section[col="#{$tmp-name}"], section[#{$tmp-name}="#{$i}"] {
+          flex-basis: #{percentage($i / map-get($grid, size))};
+          max-width: #{percentage($i / map-get($grid, size))};
 
-        &:before, &:after {
-          content: "";
-          box-sizing: border-box;
-          flex: 0 0 auto;
-          display: block;
-          flex-basis: map-get($grid, gutter); 
-          max-width: map-get($grid, gutter);
-          height: 32px;
-          margin-top: 16px;
+          &:before, &:after {
+            content: "";
+            box-sizing: border-box;
+            flex: 0 0 auto;
+            display: block;
+            flex-basis: map-get($grid, gutter); 
+            max-width: map-get($grid, gutter);
+            height: 32px;
+            margin-top: 16px;
+          }
+
+          &.no-gutters {
+            &:before, &:after {
+              content: none;
+            }
+          }
         }
 
-        &.no-gutters {
-          &:before, &:after {
-            content: none;
+        @if $i <= map-get($grid, size) - 1 {
+          .col-#{$tmp-name}-offset-#{$i} {
+            margin-left: #{percentage($i / map-get($grid, size))};
           }
         }
       }
 
-      @if $i <= map-get($grid, size) - 1 {
-        .col-#{$tmp-name}-offset-#{$i} {
-          margin-left: #{percentage($i / map-get($grid, size))};
-        }
+      .start-#{$tmp-name} {
+        justify-content: flex-start;
+        text-align: start;
       }
-    }
 
-    .start-#{$tmp-name} {
-      justify-content: flex-start;
-      text-align: start;
-    }
+      .center-#{$tmp-name} {
+        justify-content: center;
+        text-align: center;
+      }
 
-    .center-#{$tmp-name} {
-      justify-content: center;
-      text-align: center;
-    }
+      .end-#{$tmp-name} {
+        justify-content: flex-end;
+        text-align: end;
+      }
 
-    .end-#{$tmp-name} {
-      justify-content: flex-end;
-      text-align: end;
-    }
+      .top-#{$tmp-name} {
+        align-items: flex-start;
+      }
 
-    .top-#{$tmp-name} {
-      align-items: flex-start;
-    }
+      .middle-#{$tmp-name} {
+        align-items: center;
+      }
 
-    .middle-#{$tmp-name} {
-      align-items: center;
-    }
+      .bottom-#{$tmp-name} {
+        align-items: flex-end;
+      }
 
-    .bottom-#{$tmp-name} {
-      align-items: flex-end;
-    }
+      .around-#{$tmp-name} {
+        justify-content: space-around;
+      }
 
-    .around-#{$tmp-name} {
-      justify-content: space-around;
-    }
+      .between-#{$tmp-name} {
+        justify-content: space-between;
+      }
 
-    .between-#{$tmp-name} {
-      justify-content: space-between;
-    }
+      .first-#{$tmp-name} {
+        order: -1;
+      }
 
-    .first-#{$tmp-name} {
-      order: -1;
-    }
-
-    .last-#{$tmp-name} {
-      order: 1;
+      .last-#{$tmp-name} {
+        order: 1;
+      }
     }
   }
   $last-name: $breakpoint;
